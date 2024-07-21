@@ -1,16 +1,12 @@
-package com.sumin.coroutineflow.lessons.lesson2
+package com.sumin.coroutineflow.lessons.lesson3
 
 import kotlinx.coroutines.delay
-
-import kotlinx.coroutines.flow.*
-
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.map
-
 
 suspend fun main() {
 
@@ -28,9 +24,10 @@ fun getFlowByFlowOfBuilder(): Flow<Int> {
 }
 
 fun getFlowByBuilderFlow(): Flow<Int> {
-    val numbers = listOf(3, 4, 8, 16, 5, 7, 11, 32, 41, 28, 43, 47, 84, 116, 53, 59, 61)
+    val firstFlow = getFlowByFlowOfBuilder()
     return flow {
-        numbers.forEach {
+        firstFlow.collect {
+            println("Emitted from first flow $it")
             emit(it)
         }
     }
