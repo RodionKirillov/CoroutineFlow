@@ -38,9 +38,11 @@ class CryptoActivity : AppCompatActivity() {
                 is State.Initial -> {
                     binding.progressBarLoading.isVisible = false
                 }
+
                 is State.Loading -> {
                     binding.progressBarLoading.isVisible = true
                 }
+
                 is State.Content -> {
                     binding.progressBarLoading.isVisible = false
                     adapter.submitList(it.currencyList)
