@@ -16,7 +16,8 @@ object UsersRepository {
     suspend fun loadUsers(): Flow<List<String>> = flow {
         while (true) {
             emit(users.toList())
-            delay(500)
+            delay(1000)
+
         }
     }
 }
