@@ -54,26 +54,17 @@ class CryptoActivity : AppCompatActivity() {
 
                             is State.Loading -> {
                                 binding.progressBarLoading.isVisible = true
+                                binding.buttonRefreshList.isEnabled = false
                             }
 
                             is State.Content -> {
-                                log("State.Content")
                                 binding.progressBarLoading.isVisible = false
+                                binding.buttonRefreshList.isEnabled = true
                                 adapter.submitList(it.currencyList)
                             }
                         }
                     }
             }
         }
-    }
-
-    private fun log(message: String) {
-        Log.d(LOG_TAG, message)
-    }
-
-    companion object {
-
-        private const val LOG_TAG = "LOG_TAG"
-        fun newIntent(context: Context) = Intent(context, CryptoActivity::class.java)
     }
 }
