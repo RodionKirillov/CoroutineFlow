@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.sumin.coroutineflow.databinding.ActivityCryptoBinding
@@ -65,5 +64,10 @@ class CryptoActivity : AppCompatActivity() {
                     }
             }
         }
+    }
+
+    companion object {
+
+        fun newIntent(context: Context) = Intent(context, CryptoActivity::class.java)
     }
 }
