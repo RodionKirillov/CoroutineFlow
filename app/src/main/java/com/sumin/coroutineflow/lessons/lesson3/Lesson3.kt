@@ -1,25 +1,17 @@
 package com.sumin.coroutineflow.lessons.lesson3
 
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.asFlow
-import kotlinx.coroutines.flow.emitAll
-import kotlinx.coroutines.flow.filter
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOf
-import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.toList
+import kotlinx.coroutines.flow.*
 
 suspend fun main() {
-    val result = getFlowByBuilderFlow()
-        .filter { it.isPrime() }
+
+    val result = getFlowByBuilderFlow().filter { it.isPrime() }
         .filter { it > 20 }
         .map {
             println("Map")
             "Number: $it"
         }
-        .first()
+        .last()
     println(result)
 }
 
@@ -31,14 +23,13 @@ fun getFlowByBuilderFlow(): Flow<Int> {
     val firstFlow = getFlowByFlowOfBuilder()
     return flow {
 //        firstFlow.collect {
-//            println("Emitted from first flow $it")
+//            println("Emitted from first flow: $it")
 //            emit(it)
 //        }
 //        emitAll(firstFlow)
         var i = 0
         while (true) {
-            this.emit(i++)
-            delay(1000)
+            emit(i++)
         }
     }
 }

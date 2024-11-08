@@ -25,9 +25,10 @@ class UsersViewModel : ViewModel() {
 
     private fun loadUsers() {
         viewModelScope.launch {
-           repository.loadUsers().collect{
-               _users.value = it
-           }
+            repository.loadUsers()
+                .collect {
+                    _users.value = it
+                }
         }
     }
 }

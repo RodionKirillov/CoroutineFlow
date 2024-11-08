@@ -1,15 +1,11 @@
 package com.sumin.coroutineflow.lessons.lesson2
 
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.asFlow
-import kotlinx.coroutines.flow.filter
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOf
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.*
 
 suspend fun main() {
-    getFlowByFlowOfBuilder().filter { it.isPrime() }
+
+    getFlowByBuilderFlow().filter { it.isPrime() }
         .filter { it > 20 }
         .map {
             println("Map")
